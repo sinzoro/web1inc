@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"  "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="department">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="departmentEntity" type="com.list.entity.DepartmentEntity" />
+	
+	
+	<select id="getDepartmentList" parameterClass="departmentEntity" resultClass="departmentEntity"> 
+	 
+	 /* 1.조건없는 리스트 추출 */
+		SELECT 
+			dept_code as deptCode,
+			dept_name as deptName,
+			dept_ename as deptEname,
+			create_date as createDate	
+		FROM DEPARTMENT ORDER BY DEPT_CODE
+	
+	 
+	   /* 2. dynamic 을 조건을 이용한 리스트 추출 */ 
+		<!-- SELECT 
+			dept_code as deptCode,
+			dept_name as deptName,
+			dept_ename as deptEname,
+			create_date as createDate	
+		FROM DEPARTMENT 
+		<dynamic prepend="WHERE">
+		  <isLessEqual property="deptCode" compareValue="20" prepend="and">
+		  	1=12
+		  </isLessEqual>
+		  <isNotEmpty property="deptCode" prepend="and"> 
+		  	dept_code=#deptCode#
+		  </isNotEmpty>
+		  <isEmpty property="deptName" prepend="and">
+		  	1=1
+		  </isEmpty>
+		  <isGreaterEqual property="deptCode" compareValue="10" prepend="and">
+		  	100=#deptCode#
+		  </isGreaterEqual>
+		  <isNotEmpty property="testList">
+			  <iterate prepend="AND DEPT_CODE IN " property="testList" open="(" close=")" conjunction=",">
+	            #testList[].data#
+			  </iterate>
+		  </isNotEmpty>
+
+		  
+		</dynamic>
+		ORDER BY DEPT_CODE -->
+	
+	 
+	 
+	</select>
+	
+	
+	<resultMap class="com.list.entity.DepartmentEntity" id="departmentEntityResultMap">
+		<result property="deptCode" column="DEPT_CODE"/> 
+		<result property="deptName" column="DEPT_NAME" />
+		<result property="deptEname" column="DEPT_ENAME"/> 
+		<result property="createDate" column="CREATE_DATE"/>  
+	</resultMap>
+	
+	<parameterMap class="com.list.entity.DepartmentEntity" id="departmentEntityParamMap">
+		<parameter property="deptCode" javaType="java.lang.Integer" jdbcType="INTEGER" mode="IN"/>
+	</parameterMap>
+	
+	 
+	
+	<select id="getDepartmentList2" parameterMap="departmentEntityParamMap" resultMap="departmentEntityResultMap">
+		SELECT 
+			DEPT_CODE,
+			DEPT_NAME,
+			DEPT_ENAME,
+			CREATE_DATE	
+		FROM DEPARTMENT 
+		WHERE DEPT_CODE=?
+		ORDER BY DEPT_CODE 
+	</select>
+	
+	
+	<statement id="insertDepartment" parameterClass="java.util.HashMap" resultClass="int">
+		INSERT INTO DEPARTMENT (DEPT_CODE,DEPT_NAME,DEPT_ENAME,CREATE_DATE) VALUES (#deptCode#,#deptName#,#deptEname#,SYSDATE)
+	</statement>
+
+	<statement id="sampleInsertEnd" parameterClass="java.util.HashMap" resultClass="int">
+		INSERT INTO DEPARTMENT (DEPT_CODE,DEPT_NAME,DEPT_ENAME,CREATE_DATE) VALUES (#deptCode#,#deptName#,#deptEname#,SYSDATE)
+	</statement>
+	
+
+
+</sqlMap>
