@@ -311,11 +311,25 @@ public class BoardService {
 			s++;
 		}
 		if (selc != 0) {
-		//	sels++;
+			//	sels++;
 		}
+		
+		int maxPaging = s/maxPagingViewCount;
+//		System.out.println( "sss1:::"+ s/maxPagingViewCount );
+//		System.out.println( "sss2:::"+ s%maxPagingViewCount );
+//		System.out.println( "sss3:::"+ 3%2 );
+//		System.out.println( "maxPagingViewCount:::"+ maxPagingViewCount );
+		if( s%maxPagingViewCount != 0 ) {
+			maxPaging++;
+		}
+		//int presentPaging = (viewPage+1)/maxPagingViewCount+1;
+		//if( (viewPage)%maxPagingViewCount != 0 ) {
+		//	presentPaging++;
+		//}
+		
 		if (sels >= 1) { // < 뒤로
 			pagingStr += "<a id=ui_pgn_prev title=이전페이지 class=pgn_btn href=javascript:selectedPageSubmit("
-					+ ((viewPage - maxPagingViewCount) < 1 ? 1 : (viewPage - maxPagingViewCount))
+					+ ((viewPage - maxPagingViewCount) < 1 ? 1 : (viewPage - 1))
 					+ ") target=_self><span class=a11y_hidden>이전페이지</span></a>";
 		}
 		for (int i = (sels * maxPagingViewCount) + 1; i <= (sels * maxPagingViewCount) + maxPagingViewCount; i++) {
@@ -331,9 +345,9 @@ public class BoardService {
 				break;
 			}
 		} // for
-		if (  (sels*maxPagingViewCount+1) != s ) { // > 앞으로
+		if (  sels+1 < maxPaging ) { // > 앞으로
 			pagingStr += "<a  title=다음페이지 id=ui_pgn_next class=pgn_btn href=javascript:selectedPageSubmit("
-					+ ((viewPage + maxPagingViewCount) > s ? s : (viewPage + maxPagingViewCount))
+					+ ((viewPage + maxPagingViewCount) > s ? s : ( viewPage + 1 ))
 					+ ") target=_self><span class=a11y_hidden>다음페이지</span></a>";
 		}
 		pagingStr += "</div>";
@@ -341,10 +355,11 @@ public class BoardService {
 		if( allCount == 0 ) {
 			pagingStr = "";
 		}
-
-		//System.out.println( "s:"+s );
-		//System.out.println( "sels:"+sels );
-		//System.out.println( "c:"+c );
+		
+//		System.out.println( "maxPaging:"+maxPaging );
+//		System.out.println( "s:"+s );
+//		System.out.println( "sels:"+sels );
+//		System.out.println( "presentPaging:"+presentPaging );
 		
 		return pagingStr;
 	}
