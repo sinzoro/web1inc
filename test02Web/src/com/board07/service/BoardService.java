@@ -337,6 +337,10 @@ public class BoardService {
 					+ ") target=_self><span class=a11y_hidden>다음페이지</span></a>";
 		}
 		pagingStr += "</div>";
+		
+		if( allCount == 0 ) {
+			pagingStr = "";
+		}
 
 		//System.out.println( "s:"+s );
 		//System.out.println( "sels:"+sels );

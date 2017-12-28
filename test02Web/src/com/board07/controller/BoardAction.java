@@ -290,7 +290,12 @@ public class BoardAction extends HttpServlet {
 
 	protected String insertPro(HttpServletRequest request) throws ServletException, IOException {
 		//
-		String uploadPath = request.getSession().getServletContext().getRealPath("/upload");
+		//String uploadPath = request.getSession().getServletContext().getRealPath("/upload");
+		String uploadPath = "c:" +File.separator + "Upload3";
+        File dir = new File( uploadPath + File.separator );
+        if(!dir.exists()) {//업로드 디렉토리가 존재하지 않으면 생성
+            dir.mkdirs();
+        }
 		System.out.println(uploadPath);
 
 		int size = 10 * 1024 * 1024;
@@ -373,12 +378,20 @@ public class BoardAction extends HttpServlet {
 			//fileName = new String(request.getParameter("fileUrl").getBytes("ISO-8859-1"), "KSC5601");
 			// TODO Auto-generated catch block
 			
-				String uploadPath = request.getSession().getServletContext().getRealPath("/upload");
+				//String uploadPath = request.getSession().getServletContext().getRealPath("/upload");
+				
+				String uploadPath = "c:" +File.separator + "Upload3";
+		        File dir = new File( uploadPath + File.separator );
+		        if(!dir.exists()) {//업로드 디렉토리가 존재하지 않으면 생성
+		            dir.mkdirs();
+		        }
+			
 				System.out.println("fileName:::"+fileName);
-				System.out.println("uploadPath:::"+uploadPath);
+				//System.out.println("uploadPath:::"+uploadPath);
 			
 				//cxt = getServletConfig().getServletContext();
 				//fileUrl = "WebContent/StyleUpload/" + fileName;
+				
 				file = uploadPath+"\\"+fileName;
 				
 				//System.out.println(file);
