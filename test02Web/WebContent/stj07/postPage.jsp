@@ -27,6 +27,7 @@
 %>
 
 <script language='javascript' src="<%=request.getContextPath()%>/common/js/byteCheck.js"></script>
+<script language='javascript' src="<%=request.getContextPath()%>/common/js/showModalDialog.js"></script>
 <script language='javascript'>
 
 
