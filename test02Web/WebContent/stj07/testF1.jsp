@@ -40,8 +40,13 @@
 		
 		var obj = new Object();
         obj.selNum = document.getElementById('selNum').value;
+        //obj.frm = document.getElementById('postForm');
+        obj.mom = this;
         
+        //alert( this );
         //alert( obj.selNum );
+        //alert( obj.frm );
+        //alert( document.getElementById('postForm') );
 
         var rtnValue = window.showModalDialog(url, obj, "dialogWidth:980px;dialogHeight:600px;status:no;help:no;location:no");
          

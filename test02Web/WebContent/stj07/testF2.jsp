@@ -32,26 +32,55 @@
         	//alert( document.getElementById('selNum').value );
         	
         	///
+        	getDialogArguments();
+        	
         	var obj = window.dialogArguments;
+
         					//dialogArguments
     		//ck value get
     		var fileNameCk = document.getElementsByClassName('fileNameCk');
     		//alert( fileNameCk.length );
     		
     		document.getElementById('parentSelNum').value = obj.selNum;
-    		alert( document.getElementById('parentSelNum').value );
-    		
-    		
+    		var mom = obj.mom;
+    		//alert( document.getElementById('parentSelNum').value );
+    		//alert( obj.selNum );
+    		//alert( obj.frm );
     		
     		
     		// file input count
     		document.getElementById("selFileCKCount").value = fileNameCk.length;
+    		//document.getElementById("UpdateFileInsertPro").action = "./testF1.jsp";
+    		
+    		//alert( mom.document.location );
+    		//mom.document.location.reload();
+    		mom.document.location.href = './testF2.jsp';
+    		
+    		
     		//document.getElementById("UpdateFileInsertPro").submit();
     		
-    		document.onload = dialogArguments.location.reload();
+    		//document.onload = dialogArguments.location.reload();
+    		//top.opener.document.location.reload();
+    		//parent.document.location.reload();
+    		//opener.location.reload();
+    		//opener.document.location.reload();
+    		//opener.parent.location.reload();
+    		//opener.location.reload(true);
+    		//opener.parent.location.href = reload
+    		//opener.location.href = reload
+    		 //opener.parent.location.replace("./testF1.jsp");
+    		//alert(window.opener.postForm.cmd.value);
+    		//window.opener.parent.location.reload();
+    		//window.opener.location.reload();
     		
-    		self.colse();
-    		window.close();
+    		//var parentWindow = window.opener;
+    		//var parentWindow = document.getElementById('postForm');
+    		//alert( parentWindow );
+    		//parentWindow.location.href = 'http://blog.saltfactory.net'
+
+
+    		//self.colse();
+    		//window.close();
     		
     	}
 

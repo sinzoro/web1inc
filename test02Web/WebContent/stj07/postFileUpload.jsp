@@ -29,8 +29,10 @@
         	//alert( document.getElementById('selNum').value );
         	
         	///
+        	getDialogArguments();
+        	
         	var obj = window.dialogArguments;
-        					//dialogArguments
+        	
     		//ck value get
     		var fileNameCk = document.getElementsByClassName('fileNameCk');
     		//alert( fileNameCk.length );
@@ -53,9 +55,7 @@
     		document.getElementById("selFileCKCount").value = fileNameCk.length;
     		//document.getElementById("UpdateFileInsertPro").submit();
     		
-    		document.onload = dialogArguments.location.reload();
-    		
-    		self.colse();
+    		opener.parent.location.reload();
     		window.close();
     		
     	}
