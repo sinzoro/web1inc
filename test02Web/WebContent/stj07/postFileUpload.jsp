@@ -20,26 +20,19 @@
 <script language='javascript'>
 
         function UpdateFileInsertProSubmit() {
-        	
-        	//alert( 'UpdateFileInsertProSubmit' );
-        	//document.getElementById('ddd').value = obj.selNum;
-        	//alert( document.getElementById('ddd').value );
-        	
-        	//alert( 'UpdateFileInsertProSubmit' );
-        	//alert( document.getElementById('selNum').value );
-        	
+
         	///
         	getDialogArguments();
         	
         	var obj = window.dialogArguments;
+        	var mom = obj.mom;
         	
     		//ck value get
     		var fileNameCk = document.getElementsByClassName('fileNameCk');
     		//alert( fileNameCk.length );
     		
     		document.getElementById('parentSelNum').value = obj.selNum;
-    		alert( document.getElementById('parentSelNum').value );
-    		
+    		//alert( document.getElementById('parentSelNum').value );
     		
     		var divFile = document.getElementsByClassName("divFile");
     		var fileGroup = document.getElementById("fileGroup");
@@ -53,9 +46,16 @@
     		
     		// file input count
     		document.getElementById("selFileCKCount").value = fileNameCk.length;
-    		//document.getElementById("UpdateFileInsertPro").submit();
     		
-    		opener.parent.location.reload();
+    		
+    		//document.getElementById("UpdateFileInsertPro").action = "<%=request.getContextPath()%>/BoardAction";
+    		document.getElementById("UpdateFileInsertPro").action = "./testF3.jsp";
+    		
+    		document.UpdateFileInsertPro.target = 'UpdateFileInsertPro';
+    		window.name = 'UpdateFileInsertPro';
+    		
+    		document.getElementById("UpdateFileInsertPro").submit();
+    		mom.document.location.reload();
     		window.close();
     		
     	}
@@ -66,7 +66,7 @@
 </head>
 <body>
 <section id = "uploadFormArea">
-<form action="<%=request.getContextPath()%>/BoardAction" method="post" id="UpdateFileInsertPro" name="UpdateFileInsertPro" enctype="multipart/form-data">
+<form action="" method="post" id="UpdateFileInsertPro" name="UpdateFileInsertPro" enctype="multipart/form-data">
 
 <input type="hidden" id="selFileCKCount" name="selFileCKCount" value="">
 <input type="hidden" id="cmd" name='cmd' value="UpdateFileInsertPro">

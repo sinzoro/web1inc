@@ -31,56 +31,24 @@
         	//alert( 'UpdateFileInsertProSubmit' );
         	//alert( document.getElementById('selNum').value );
         	
-        	///
+        	///dialogArguments
         	getDialogArguments();
         	
         	var obj = window.dialogArguments;
-
-        					//dialogArguments
+        	var mom = obj.mom;
+        	
     		//ck value get
     		var fileNameCk = document.getElementsByClassName('fileNameCk');
     		//alert( fileNameCk.length );
     		
     		document.getElementById('parentSelNum').value = obj.selNum;
-    		var mom = obj.mom;
-    		//alert( document.getElementById('parentSelNum').value );
-    		//alert( obj.selNum );
-    		//alert( obj.frm );
+    		//document.getElementById("selFileCKCount").value = fileNameCk.length;
     		
     		
-    		// file input count
-    		document.getElementById("selFileCKCount").value = fileNameCk.length;
-    		//document.getElementById("UpdateFileInsertPro").action = "./testF1.jsp";
-    		
-    		//alert( mom.document.location );
-    		//mom.document.location.reload();
-    		mom.document.location.href = './testF2.jsp';
-    		
-    		
-    		//document.getElementById("UpdateFileInsertPro").submit();
-    		
-    		//document.onload = dialogArguments.location.reload();
-    		//top.opener.document.location.reload();
-    		//parent.document.location.reload();
-    		//opener.location.reload();
-    		//opener.document.location.reload();
-    		//opener.parent.location.reload();
-    		//opener.location.reload(true);
-    		//opener.parent.location.href = reload
-    		//opener.location.href = reload
-    		 //opener.parent.location.replace("./testF1.jsp");
-    		//alert(window.opener.postForm.cmd.value);
-    		//window.opener.parent.location.reload();
-    		//window.opener.location.reload();
-    		
-    		//var parentWindow = window.opener;
-    		//var parentWindow = document.getElementById('postForm');
-    		//alert( parentWindow );
-    		//parentWindow.location.href = 'http://blog.saltfactory.net'
-
-
-    		//self.colse();
-    		//window.close();
+    		document.getElementById("UpdateFileInsertPro").action = "./testF3.jsp";
+    		document.getElementById("UpdateFileInsertPro").submit();
+    		mom.document.location.reload();
+    		window.close();
     		
     	}
 

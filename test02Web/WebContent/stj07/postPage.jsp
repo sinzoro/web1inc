@@ -59,38 +59,22 @@
 	}
 	
 	function fileUploadPage(){
-		
-		//alert( "fileUploadPage" );
-		
-		//window.open("./fileUploadForm.jsp", "", "width=400, height=300, left=500, top=400", scrollbars="1");
-		
-		//popup = window.open("<%=request.getContextPath()%>/stj07/postFileUpload.jsp", "updateFileInsert", "width=600, height=500, left=500, top=200, scrollbars=1, resizable=no");
-		//updateFileInsert = window.top;
-		//popup.focus();
 
 		var url = "<%=request.getContextPath()%>/stj07/postFileUpload.jsp";
 		
 		var obj = new Object();
         obj.selNum = document.getElementById('selNum').value;
-        
-        //alert( obj.selNum );
+        obj.mom = this;
 
         var rtnValue = window.showModalDialog(url, obj, "dialogWidth:980px;dialogHeight:600px;status:no;help:no;location:no");
-         
-
 
 		//window.showModelessDialog("<%=request.getContextPath()%>/stj07/postFileUpload.jsp", "updateFileInsert", "dialogWidth:600px; dialogHeight:500px;dialogleft=500, dialogtop=200");
 		//window.showModalDialog("<%=request.getContextPath()%>/stj07/postFileUpload.jsp", "updateFileInsert", "dialogWidth:600px; dialogHeight:500px;dialogleft=500, dialogtop=200");
-		
-		//document.getElementById('fileNum').value = fileNum;
-		//document.getElementById('cmd').value = 'fileUploadPage';
-		//document.getElementById('postForm').submit();
+
 	}
 	
 	function fileDel( fileNum ){
-		
-		//alert( fileNum );
-		
+
 		document.getElementById('fileNum').value = fileNum;
 		document.getElementById('cmd').value = 'fileDel';
 		document.getElementById('postForm').submit();
