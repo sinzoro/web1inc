@@ -41,8 +41,11 @@
 			<div id='fileGroup'>
 				<div class="divFile">
 					<input type="checkbox" class="fileNameCk">
-					<label for="fileName1">파일명1 : </label>
-					<span class="inerSpan"></span>
+					
+					<label for="fileName1">
+					<span class="inerSpan">파일명1 : </span>
+					</label>
+					
 					<input type="file" name="fileName1" id="fileName1" class="fileName">
 				</div>
 				<!-- 추가 파일 리스트 위치 -->

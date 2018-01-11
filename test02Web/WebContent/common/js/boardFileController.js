@@ -29,9 +29,9 @@ function filePlus(){
 		inputFile.setAttribute("class","fileName");
 		
 		divFile.appendChild(checkFile);
-		divFile.appendChild(labelFile);
 		inerSpan.appendChild(txtNode);
-		divFile.appendChild(inerSpan);
+		labelFile.appendChild(inerSpan);
+		divFile.appendChild(labelFile);
 		divFile.appendChild(inputFile);
 		
 		divFile.setAttribute("class","divFile");
@@ -46,8 +46,9 @@ function fileMinus(){
 	var fileNameCk = document.getElementsByClassName('fileNameCk');
 	var divFile = document.getElementsByClassName("divFile");
 	var fileGroup = document.getElementById("fileGroup");
-	var txtNode = document.getElementsByClassName("txtNode");
+	//var txtNode = document.getElementsByClassName("txtNode");
 	var inerSpan = document.getElementsByClassName("inerSpan");
+	var inerTxt = document.getElementsByClassName("inerTxt");
 
 	for( var i=0;i<fileNameCk.length;i++ ){
 		if( fileNameCk[i].checked ){
@@ -57,9 +58,10 @@ function fileMinus(){
 	}
 	
 	for( var i=0;i<fileNameCk.length;i++ ){
-		if( !fileNameCk[i].checked ){
+		//if( !fileNameCk[i].checked ){
 			inerSpan[i].textContent = ' 파일명'+(i+1)+' : ';
-		}
+			//inerTxt[i].textContent = ' 파일명'+(i+1)+' : ';
+		//}
 	}
 }
 
