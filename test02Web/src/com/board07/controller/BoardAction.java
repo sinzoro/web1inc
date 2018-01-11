@@ -411,8 +411,15 @@ public class BoardAction extends HttpServlet {
 	
 	public void fileDown(HttpServletRequest request, HttpServletResponse response) {
 
+		
+		String uploadPath = "c:" +File.separator + "Upload3";
+        File dir = new File( uploadPath + File.separator );
+        if(!dir.exists()) {//업로드 디렉토리가 존재하지 않으면 생성
+            dir.mkdirs();
+        }
+		
 		BoardService boardService = new BoardService();
-		boardService.fileDown(request, response);
+		boardService.fileDown(request, response, uploadPath);
 	}
 
 }

@@ -5,21 +5,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script>
 
-	//setTimeout("self.colse()",2000);
 	
-	setTimeout(function() {
-  		alert("33333");
-		window.open('', '_self').close();
-	}, 1000);
-
+	
+	
+	
+	
+	
 
 </script>
 </head>
-<body>
+<body ng-app="myapp" ng-controller="myappCtrl">
 
-	test3
+	앵귤러 08 작업
+	
+	
+		
+		
+		
+	
 
 </body>
 </html>

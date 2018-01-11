@@ -221,7 +221,7 @@ public class BoardService {
 		return boardDao.delFileBoardListData(selNum);	// 파일정보 테이블 y -> n 변경 
 	}
 	
-	public void fileDown( HttpServletRequest request, HttpServletResponse response ) {
+	public void fileDown( HttpServletRequest request, HttpServletResponse response , String uploadPath ) {
 		
 		String fileNum = request.getParameter("fileNum");
 		
@@ -235,8 +235,9 @@ public class BoardService {
 		
 		ServletContext context = request.getServletContext();
 
-		String savePath = "upload";
-		String sDownloadPath = context.getRealPath(savePath);
+		//String savePath = "upload3";
+		//String sDownloadPath = context.getRealPath(savePath);
+		String sDownloadPath = uploadPath;
 		String sFilePath = sDownloadPath + "\\" + fileName;
 		String sMimeType = request.getServletContext().getMimeType(sFilePath);
 		
@@ -329,7 +330,7 @@ public class BoardService {
 		
 		if (sels >= 1) { // < 뒤로
 			pagingStr += "<a id=ui_pgn_prev title=이전페이지 class=pgn_btn href=javascript:selectedPageSubmit("
-					+ ((viewPage - maxPagingViewCount) < 1 ? 1 : (viewPage - 1))
+					+ ((viewPage - maxPagingViewCount) < 1 ? 1 : ( ((viewPage - 1 - maxPagingViewCount)/maxPagingViewCount)*maxPagingViewCount+1 ))
 					+ ") target=_self><span class=a11y_hidden>이전페이지</span></a>";
 		}
 		for (int i = (sels * maxPagingViewCount) + 1; i <= (sels * maxPagingViewCount) + maxPagingViewCount; i++) {
@@ -347,7 +348,7 @@ public class BoardService {
 		} // for
 		if (  sels+1 < maxPaging ) { // > 앞으로
 			pagingStr += "<a  title=다음페이지 id=ui_pgn_next class=pgn_btn href=javascript:selectedPageSubmit("
-					+ ((viewPage + maxPagingViewCount) > s ? s : ( viewPage + 1 ))
+					+ ((viewPage + maxPagingViewCount) > s ? s : ( ((viewPage - 1 + maxPagingViewCount)/maxPagingViewCount)*maxPagingViewCount+1 ))
 					+ ") target=_self><span class=a11y_hidden>다음페이지</span></a>";
 		}
 		pagingStr += "</div>";
@@ -365,3 +366,5 @@ public class BoardService {
 	}
 
 }
+
+

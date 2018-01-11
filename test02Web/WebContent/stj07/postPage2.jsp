@@ -67,7 +67,13 @@
         obj.mom = this;
 
         var rtnValue = window.showModalDialog(url, obj, "dialogWidth:980px;dialogHeight:600px;status:no;help:no;location:no");
+        
+        if(rtnValue){
+        	//fncRefrash();
+        	document.location.reload();
+        	}
 
+        //window.document.location.reload();
 
 	}
 	
