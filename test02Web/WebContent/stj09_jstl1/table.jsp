@@ -18,6 +18,8 @@
 
 %>
 
+<c:set var="bList" value="${requestScope.bList }" />
+
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
@@ -71,7 +73,7 @@
 		                <option value="board_name" <%=(field.equals("board_name")?"selected":"") %> >작성자</option>
 		                <option value="board_content" <%=(field.equals("board_content")?"selected":"") %> >내용</option>
 		            </select>
-		            <input id="search_word" name="search_word" class="inp_type" title="검색어 입력" value="<%=search_word %>" type="text">
+		            <input id="search_word" name="search_word" class="inp_type" title="검색어 입력" value="${param.search_word }" type="text">
 		            <a href="javascript:{}" onclick="document.getElementById('form3').submit();" class="inp_btn" ><span>검색하기</span></a>
 		        </div>
 		    </fieldset>
@@ -95,6 +97,11 @@
 		            </tr>
 		        </thead>
 		        <tbody>
+		        	
+		        	<c:forEach var="bList" items="${bList }" >
+		        	
+		        	</c:forEach >
+		        	
 		            <% for( int i=0; i<bList.size(); i++ ){ %>
 		            <tr>
 		            	<td><%=((BoardEntity09)bList.get(i)).getBoardNum() %></td>
