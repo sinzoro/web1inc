@@ -29,6 +29,7 @@
 %>
 
 <c:set var="boardEntity" value="${requestScope.boardEntity }" />
+${ empty boardEntity }
 <c:set var="list" value="${requestScope.list }" />
 <c:set var="ckMap" value="${list.get(0) }" />
 <c:set var="flist" value="${requestScope.flist }" />
@@ -99,31 +100,33 @@
 		<div class="wrap">
 			<div class="board_view">
 				<ul>
-					<li><span class="post_title">제목</span> <span>${boardEntity.boardTitle }</span>
+					<li><span class="post_title">제목</span> <span>${boardEntity.getBoardTitle }</span>
 					</li>
 					<li><span class="post_title">작성자<br>
-								</span> <span>${boardEntity.getBoardName() }</span>
+								</span> <span>${boardEntity.getBoardName }</span>
 					</li>
-					<li><span class="post_title">작성일</span> <span>${boardEntity.getCreateDate() }</span>
+					<li><span class="post_title">작성일</span> <span>${boardEntity.getCreateDate }</span>
 					</li>
 				</ul>
 			</div>
 			<div class="board_content" id="board_content">
-				<textarea name="board_content" rows="10" cols="100" placeholder="내용입력" title="내용입력" id="board_content" name="board_content" onkeyup="on_key_up(this,'${ckMap.contentLeng }')">${boardEntity.getBoardContent() }</textarea>
-				<input type="text" id="board_content_byteCheck" class="board_content_byteCheck" name="board_content_byteCheck" value="(${boardEntity.getBoardContent().length() }/${ckMap.titleLeng })" readonly>
+				<textarea name="board_content" rows="10" cols="100" placeholder="내용입력" title="내용입력" id="board_content" name="board_content" onkeyup="on_key_up(this,'${ckMap.contentLeng}')">${boardEntity.getBoardContent }</textarea>
+				<input type="text" id="board_content_byteCheck" class="board_content_byteCheck" name="board_content_byteCheck" value="(${boardEntity.getBoardContent.length }/${ckMap.titleLeng })" readonly>
 				<div>
 					<div>
 						<input type="button" id="updateFileInsert" class="updateFileInsert" name="updateFileInsert" value="파일추가" onclick="fileUploadPage()">
 					</div>
 					<div>
-					
 						<c:forEach var="flist" items="${flist}" step="1" begin="0">
-							<span>
-								<a href="javascript:fileDel('${flist.fileNum }')" >X </a>
-							</span>
-							<a href="javascript:fileDown('${flist.getFileNum() }')">${flist.getOrgNm() }</a><br>
+							<c:out value="${flist.getFileNum }" />
 						</c:forEach>
-						
+	
+						<%for(int i=0;i<flist.size();i++){%>
+							<span>
+								<a href="javascript:fileDel('<%=((BoardFileEntity09)flist.get(i)).getFileNum() %>')" >X </a>
+							</span>
+							<a href="javascript:fileDown('<%=((BoardFileEntity09)flist.get(i)).getFileNum() %>')">${flist.get(i).getOrgNm }<%=((BoardFileEntity09)flist.get(i)).getOrgNm() %></a><br>
+						<%}%>
 					</div>
 				</div>
 			</div>
