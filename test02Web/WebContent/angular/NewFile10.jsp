@@ -9,7 +9,23 @@
 <script>
 
 	
-	
+	angular.module("myapp",[])
+	.controller("myappCtrl",function($scope){
+		$scope.itemData=[
+			{first:'a',second:'6'},
+			{first:'b',second:'5'},
+			{first:'c',second:'4'},
+			{first:'d',second:'3'},
+			{first:'e',second:'2'},
+			{first:'f',second:'1'}
+			
+		];
+		
+		$scope.orderExec = function(ot){
+			$scope.orderType = ot;
+		}
+		
+	});
 	
 	
 	
@@ -19,9 +35,18 @@
 </head>
 <body ng-app="myapp" ng-controller="myappCtrl">
 
-	앵귤러 08 작업
+	앵귤러 10 작업
 	
-	
+	<table>
+		<tr>
+			<td ng-click="orderExec('first')">영문자정렬</td>
+			<td ng-click="orderExec('second')">숫자정렬</td>
+		</tr>
+		<tr ng-repeat="item in itemData | orderBy:orderType">
+			<td>{{item.first}}</td>
+			<td>{{item.second}}</td>
+		</tr>
+	</table>
 		
 		
 		

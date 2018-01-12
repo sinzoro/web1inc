@@ -338,13 +338,13 @@
   
   <servlet>
     <description></description>
-    <display-name>BoardAction15</display-name>
-    <servlet-name>BoardAction15</servlet-name>
-    <servlet-class>com.board15.controller.BoardAction15</servlet-class>
+    <display-name>BoardAction09</display-name>
+    <servlet-name>BoardAction09</servlet-name>
+    <servlet-class>com.board09.controller.BoardAction09</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>BoardAction15</servlet-name>
-    <url-pattern>/BoardAction15</url-pattern>
+    <servlet-name>BoardAction09</servlet-name>
+    <url-pattern>/BoardAction09</url-pattern>
   </servlet-mapping>
   
 </web-app>

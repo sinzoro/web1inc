@@ -17,7 +17,7 @@
 	<h1>jstl fmt 라이브러리 실습 1</h1>
 	
 	<c:set var="temp" value="abcdefg,ABCDEFGH,우리나라,<>" />
-	<c:out value="${'abcdefg,ABCDEFGH,우리나라,<>'} }" /><br><br>
+	<c:out value="${'abcdefg,ABCDEFGH,우리나라,<>'}" /><br><br>
 	\${fn:length(abcdefg,ABCDEFGH,우리나라,<>)} : ${fn:length(temp)} <br>
 	\${fn:contains('abcdefg,ABCDEFGH,우리나라,<>','h')} : ${fn:contains(temp,'h')} <br>	
 	\${fn:containsIgnoreCase('abcdefg,ABCDEFGH,우리나라,<>','h')} : ${fn:containsIgnoreCase(temp, 'h')} <br>

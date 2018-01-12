@@ -24,11 +24,32 @@
 	
 	<c:set var="todayCheck" value="${map}" />
 	<c:out value="${mapVar.today}" />
+	<c:out value="${empty mapVar.today}" />
+	<c:out value="${empty todayCheck}" />
 	
+	<P>
+	<!-- Map 선언 -->
+	 <c:set var="mapTest" value="<%=new java.util.HashMap()%>" />
+	<!-- Map 에 값 넣기 -->
+	 <c:set target="${mapTest}" property="key1" value="value1" />
+	 <c:set target="${mapTest}" property="key2" value="value2" />
+	${mapTest.key1}<!-- value1 이 출력됨 -->
+	${mapTest.key2}<!-- value2 이 출력됨 -->
+	
+	<P>
+	<c:forEach var="mapTest" items="${mapTest}">
+		${mapTest.key}<!--  key1, key2 ... 이 출력됨 -->
+	 	${mapTest.value}<!--  value1, value2 ... 이 출력됨 --> 
+	</c:forEach>
+
+	<P>
+	<c:set var="todayCheck" value="${mapTest}" />
+	<c:out value="${todayCheck}" />
 	
 	<p>
 	
 	<c:set var="myColor" value="빨강" />
+	<c:out value="${myColor}" />
 	<c:if test="${myColor == '빨강' }">
 		색상은 빨강색이다..
 	</c:if>

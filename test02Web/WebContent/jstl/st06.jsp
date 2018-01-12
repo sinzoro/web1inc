@@ -19,7 +19,7 @@
 	
 	<c:url value="../jstl2/urlJstlEnd2.jsp?name=홍3test2홍길동333&age=74" var="moveUrl3"/>
 	<c:url value="urlJstlEnd.jsp?name=홍3test2홍길동222&age=74" var="moveUrl2" />
-	
+	<!-- c:param 안 쓰면 한글 깨짐 -->
 	<c:url value="./test/urlJstlEnd.jsp" var="moveUrl1" >
 		<c:param name="name" value="홍길동" />
 		<c:param name="age" value="74" />

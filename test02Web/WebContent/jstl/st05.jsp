@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+
 	<%
 		int[] num = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		request.setAttribute("myArray", num);
@@ -43,7 +43,7 @@
 		jobList.add(job02);
 		jobList.add(job03);
 		request.setAttribute("job", jobList);
-	
+		
 		
 		
 		String str = "A,B,C,D";

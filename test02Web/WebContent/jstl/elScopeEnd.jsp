@@ -12,7 +12,8 @@
 1.pageObject Scope에 저장된 name의 value 접근 </br>
 	- ${ pageScope.name } </br>
 	- ${ pageScope["name"] } </br></br>
-
+	- ${ name } </br></br>
+	
 2.requestObject Scope에 저장된 name의 value 접근 </br>
 	- ${ requestScope.name } </br>
 	- ${ requestScope["name"] } </br></br>
