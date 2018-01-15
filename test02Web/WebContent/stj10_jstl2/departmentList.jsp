@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ include file="common.jsp" %>
 
-<%@ page import="com.list.entity.DepartmentEntity"%>
+<%@ page import="com.list10.entity.DepartmentEntity"%>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,7 +23,7 @@
 		
 		document.getElementById('cmd').value = 'select';
 		
-		document.getElementById('formDept').action = '/test02Web/StudentAction';
+		document.getElementById('formDept').action = '${pageContext.request.contextPath}/StudentAction';
 		document.getElementById("formDept").submit();
 	}
 
@@ -31,7 +33,7 @@
 </head>
 <body>
 
-	<form id='formDept' action='/test02Web/DepartmentAction' method=get>
+	<form id='formDept' action='${pageContext.request.contextPath}/DepartmentAction' method=get>
 		<table border="1">
 			<tr>
 				<td colspan=5 align=right><input type=submit value=등록하기 ></td>
@@ -44,34 +46,20 @@
 				<td width='200'>학과생성명</td>
 				<td width='200'>학생정보상세보기</td>
 			</tr>
-			<%
-				ArrayList list = (ArrayList) request.getAttribute("list");
 
-				int deptCode = 0;
-				String deptName = null;
-				String deptEname = null;
-				Timestamp createDate = null;
 
-				for (int i = 0; i < list.size(); i++) {
-					
-					deptCode = ((DepartmentEntity) list.get(i)).getDeptCode();
-					deptName = ((DepartmentEntity) list.get(i)).getDeptName();
-					deptEname = ((DepartmentEntity) list.get(i)).getDeptEname();
-					createDate = ((DepartmentEntity) list.get(i)).getCreateDate();
-
-			%>
+		<c:forEach var="list" items="${list }" begin="0" step="1" >
 			<tr>
-				<td><%=deptCode %></td>
-				<td><%=deptName %></td>
-				<td><%=deptEname %></td>
-				<td><%=createDate %></td>
+				<td>${list.getDeptCode() }</td>
+				<td>${list.getDeptName() }</td>
+				<td>${list.getDeptEname() }</td>
+				<td>${list.getCreateDate() }</td>
 				<td>
-				<a href="javascript:deptSubmit( <%=deptCode %> );" >학생정보</a>
+				<a href="javascript:deptSubmit( ${list.getDeptCode() } );" >학생정보</a>
 				</td>
 			</tr>
-			<%
-				}
-			%>
+		</c:forEach>>
+			
 			<input type=hidden id='srch' name='srch' value=''>
 		</table>
 	</form>

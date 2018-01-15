@@ -7,18 +7,7 @@
 <%@ page import="com.board09.entity.BoardEntity09" %>
 <%@ page import="java.util.ArrayList" %>
 
-<%
-	ArrayList bList = (ArrayList)request.getAttribute("bList");
-	String getPaging = request.getAttribute("getPaging").toString();
-	String search_word = request.getAttribute("search_word").toString();
-	String field = request.getAttribute("field").toString();
-	
-	String viewPage = request.getAttribute("viewPage").toString();
-	
 
-%>
-
-<c:set var="bList" value="${requestScope.bList }" />
 
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -64,14 +53,14 @@
 	<input type="hidden" id="cmd" name='cmd' value="select">
 	<input type="hidden" id="selNum" name='selNum' value="">
 		<div class="wrap">
-		    <h2>게시판<%=viewPage %></h2>
+		    <h2>게시판</h2>
 		    <fieldset>
 		        <div class="search_form">
 		            <legend class="a11y_hidden">게시판 목록 검색</legend>
 		            <select name="field" title="분류선택">
-		                <option value=board_title <%=(field.equals("board_title")?"selected":"") %> >제목</option>
-		                <option value="board_name" <%=(field.equals("board_name")?"selected":"") %> >작성자</option>
-		                <option value="board_content" <%=(field.equals("board_content")?"selected":"") %> >내용</option>
+		                <option value=board_title ${ field eq "board_title" ?"selected":"" } >제목</option>
+		                <option value="board_name" ${ field eq "board_name" ?"selected":"" } >작성자</option>
+		                <option value="board_content" ${ field eq "board_content" ?"selected":"" } >내용</option>
 		            </select>
 		            <input id="search_word" name="search_word" class="inp_type" title="검색어 입력" value="${param.search_word }" type="text">
 		            <a href="javascript:{}" onclick="document.getElementById('form3').submit();" class="inp_btn" ><span>검색하기</span></a>
@@ -89,7 +78,7 @@
 		        </colgroup>
 		        <thead>
 		            <tr>
-		                <th scope="col">번호</th>
+		                <th scope="col">번호${field }</th>
 		                <th scope="col">제목</th>
 		                <th scope="col">내용</th>
 		                <th scope="col">작성일</th>
@@ -98,23 +87,18 @@
 		        </thead>
 		        <tbody>
 		        	
-		        	<c:forEach var="bList" items="${bList }" >
-		        	
+		        	<c:forEach var="bList" items="${bList }" begin="0" step="1">
+			        	<tr>
+			        		<td>${bList.getBoardNum() }</td>
+			        		<td>${bList.getBoardTitle() }</td>
+			                <th scope="row">
+			                	<a href="javascript:boardDetailSubmit('${bList.getBoardNum() }')">${bList.getBoardContent() }</a>
+			                </th>
+			                <td>${bList.getCreateDate() }</td>
+			                <td>${bList.getBoardClickCnt() }</td>
+		                </tr>
 		        	</c:forEach >
 		        	
-		            <% for( int i=0; i<bList.size(); i++ ){ %>
-		            <tr>
-		            	<td><%=((BoardEntity09)bList.get(i)).getBoardNum() %></td>
-		                <td><%=((BoardEntity09)bList.get(i)).getBoardTitle() %></td>
-		                <th scope="row">
-		                	<a href="javascript:boardDetailSubmit('<%=((BoardEntity09)bList.get(i)).getBoardNum() %>')"><%=((BoardEntity09)bList.get(i)).getBoardContent() %></a>
-		                </th>
-		                <td><%=((BoardEntity09)bList.get(i)).getCreateDate() %></td>
-		                <td><%=((BoardEntity09)bList.get(i)).getBoardClickCnt() %></td>
-		            </tr>
-		            <% } %>
-		            
-		            
 		        </tbody>
 		    </table>
 		    <div class="unrole">

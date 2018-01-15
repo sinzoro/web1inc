@@ -1,52 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ include file="common.jsp" %>
 
-<%@ page import="com.list.entity.CircleEntity" %>
+<%@ page import="com.list10.entity.CircleEntity" %>
 
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-		<table border=1>
-		<tr>
-			<td width=200>µ¿¾Æ¸®°¡ÀÔ¹øÈ£</td>
-			<td width=200>µ¿¾Æ¸®¸í</td>
-			<td width=200>ÇĞ¹ø</td>
-			<td width=200>ÀÌ¸§</td>
-			<td width=200>µ¿¾Æ¸®Á÷Ã¥</td>
-		</tr>
-	<%
-	ArrayList list = (ArrayList)request.getAttribute("list");
-		
-		System.out.println( list.size() );
-	
-	for(int i=0; i<list.size();i++){
-		
-		int cir_num = 0;
-		String cir_name = null;
-		String stu_no = null;
-		String stu_name = null;
-		String president = null;
-		
-%>
+<table border=1>
 	<tr>
-		<td><%=((CircleEntity)list.get(i)).getCirNum() %></td>
-		<td><%=((CircleEntity)list.get(i)).getCirName() %></td>
-		<td><%=((CircleEntity)list.get(i)).getStuNo() %></td>
-		<td><%=((CircleEntity)list.get(i)).getStuName() %></td>
-		<td><%=((CircleEntity)list.get(i)).getPresident() %></td>
+		<td width=200>ë™ì•„ë¦¬ê°€ì…ë²ˆí˜¸</td>
+		<td width=200>ë™ì•„ë¦¬ëª…</td>
+		<td width=200>í•™ë²ˆ</td>
+		<td width=200>ì´ë¦„</td>
+		<td width=200>ë™ì•„ë¦¬ì§ì±…</td>
 	</tr>
-<%	
-	}
-%>
-	</table>
+
+
+	<c:forEach var="cList" items="${cList }" begin="0" step="1" >
+	<tr>
+		<td>${cList.getCirNum() }</td>
+		<td>${cList.getCirName() }</td>
+		<td>${cList.getStuNo() }</td>
+		<td>${cList.getStuName() }</td>
+		<td>${cList.getPresident() }</td>
+	</tr>
+	</c:forEach>
+
+</table>
 
 
 

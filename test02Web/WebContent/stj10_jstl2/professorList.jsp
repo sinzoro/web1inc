@@ -1,41 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
 <%@ include file="common.jsp" %>
-<%@ page import="com.list.entity.ProfessorEntity" %>
+<%@ page import="com.list10.entity.ProfessorEntity" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 	<table border=1>
 	<tr>
-		<td width=200>±³¼ö¹øÈ£</td>
-		<td width=200>±³¼ö¸í</td>
-		<td width=200>±³¼ö¿µ¹®ÀÌ¸§</td>
-		<td width=200>±³¼öÀÓ¿ë³¯Â¥</td>
+		<td width=200>êµìˆ˜ë²ˆí˜¸</td>
+		<td width=200>êµìˆ˜ëª…</td>
+		<td width=200>êµìˆ˜ì˜ë¬¸ì´ë¦„</td>
+		<td width=200>êµìˆ˜ì„ìš©ë‚ ì§œ</td>
 	</tr>
-	<%
-	ArrayList list = (ArrayList)request.getAttribute("list");
-		
-		System.out.println( list.size() );
-	
-	for(int i=0; i<list.size();i++){
-		
-%>
-	<tr>
-		<td><%=((ProfessorEntity)list.get(i)).getProfCode() %></td>
-		<td><%=((ProfessorEntity)list.get(i)).getProfName() %></td>
-		<td><%=((ProfessorEntity)list.get(i)).getProfEname() %></td>
-		<td><%=((ProfessorEntity)list.get(i)).getCreateDate() %></td>
-	</tr>
-<%	
-	}
-%>
+
+
+
+		<c:forEach var="list" items="${list }" begin="0" step="1" >
+		<tr>
+			<td>${list.getProfCode()} </td>
+			<td>${list.getProfName()} </td>
+			<td>${list.getProfEname()}  </td>
+			<td>${list.getCreateDate()} </td>
+		</tr>
+		</c:forEach>
+
 	</table>
 
 

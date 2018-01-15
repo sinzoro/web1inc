@@ -18,20 +18,11 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/stj09_jstl1/css/style.css	" type="text/css" />
 <title>post page sample</title>
-<%
-	BoardEntity09 boardEntity = (BoardEntity09)request.getAttribute("boardEntity");
-	String selNum = request.getParameter("selNum");
 
-	ArrayList list = (ArrayList)request.getAttribute("list");
-	HashMap<String, String> ckMap = (HashMap<String, String>)(list.get(0));
-	
-	ArrayList flist = (ArrayList)request.getAttribute("flist");
-%>
 
-<c:set var="boardEntity" value="${requestScope.boardEntity }" />
-<c:set var="list" value="${requestScope.list }" />
+
 <c:set var="ckMap" value="${list.get(0) }" />
-<c:set var="flist" value="${requestScope.flist }" />
+
 
 
 <script language='javascript' src="${pageContext.request.contextPath}/common/js/byteCheck.js"></script>

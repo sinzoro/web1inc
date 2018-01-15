@@ -1,56 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
 <%@ include file="common.jsp" %>
-<%@ page import="com.list.entity.FeeEntity" %>
+<%@ page import="com.list10.entity.FeeEntity" %>
 
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 	<table border="1">
 		<tr>
-			<td width='200'>ÇĞ¹ø</td>
-			<td width='200'>µî·Ï³âµµ</td>
-			<td width='200'>µî·ÏÇĞ±â</td>
-			<td width='200'>ÀÔÇĞ±İ</td>
-			<td width='200'>µî·Ï±İ(¼ö¾÷·á)</td>
-			<td width='200'>µî·Ï±İÃÑ¾×=ÀÔÇĞ±İ+¼ö¾÷·á</td>
-			<td width='200'>ÀåÇĞÄÚµå</td>
-			<td width='200'>ÀåÇĞ±İ¾×</td>
-			<td width='200'>³³ºÎÃÑ¾×=µî·Ï±İÃÑ¾×-ÀåÇĞ±İ¾×</td>
-			<td width='200'>µî·Ï±¸ºĞ</td>
-			<td width='200'>µî·Ï³¯Â¥</td>
+			<td width='200'>í•™ë²ˆ</td>
+			<td width='200'>ë“±ë¡ë…„ë„</td>
+			<td width='200'>ë“±ë¡í•™ê¸°</td>
+			<td width='200'>ì…í•™ê¸ˆ</td>
+			<td width='200'>ë“±ë¡ê¸ˆ(ìˆ˜ì—…ë£Œ)</td>
+			<td width='200'>ë“±ë¡ê¸ˆì´ì•¡=ì…í•™ê¸ˆ+ìˆ˜ì—…ë£Œ</td>
+			<td width='200'>ì¥í•™ì½”ë“œ</td>
+			<td width='200'>ì¥í•™ê¸ˆì•¡</td>
+			<td width='200'>ë‚©ë¶€ì´ì•¡=ë“±ë¡ê¸ˆì´ì•¡-ì¥í•™ê¸ˆì•¡</td>
+			<td width='200'>ë“±ë¡êµ¬ë¶„</td>
+			<td width='200'>ë“±ë¡ë‚ ì§œ</td>
 		</tr>
-		<%
-	ArrayList list = (ArrayList)request.getAttribute("list");
+
+
+
+
+
+		<c:forEach var="list" items="${list }" begin="0" step="1" >
+		<tr>
+			<td>${list.getStuNo() } </td>
+			<td>${list.getFeeYear() } </td>
+			<td>${list.getFeeTerm() } </td>
+			<td>${list.getFeeEnter() } </td>
+			<td>${listgetFeePrice() } </td>
+			<td>${list.getFeeTotal() } </td>
+			<td>${list.getJangCode() }  </td>
+			<td>${list.getJangTotal() } </td>
+			<td>${list.getFeePay() } </td>
+			<td>${list.getFeeDiv() } </td>
+			<td>${list.getFeeDate() } </td>
+		</tr>
+		</c:forEach>
 		
-		System.out.println( list.size() );
-	
-	for(int i=0; i<list.size();i++){
-		
-%>
-	<tr>
-		<td><%=((FeeEntity)list.get(i)).getStuNo() %></td>
-		<td><%=((FeeEntity)list.get(i)).getFeeYear() %></td>
-		<td><%=((FeeEntity)list.get(i)).getFeeTerm() %></td>
-		<td><%=((FeeEntity)list.get(i)).getFeeEnter() %></td>
-		<td><%=((FeeEntity)list.get(i)).getFeePrice() %></td>
-		<td><%=((FeeEntity)list.get(i)).getFeeTotal() %></td>
-		<td><%=((FeeEntity)list.get(i)).getJangCode() %></td>
-		<td><%=((FeeEntity)list.get(i)).getJangTotal() %></td>
-		<td><%=((FeeEntity)list.get(i)).getFeePay() %></td>
-		<td><%=((FeeEntity)list.get(i)).getFeeDiv() %></td>
-		<td><%=((FeeEntity)list.get(i)).getFeeDate() %></td>
-	</tr>
-<%	
-	}
-%>
 	</table>
 
 

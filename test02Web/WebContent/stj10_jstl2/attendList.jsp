@@ -1,70 +1,56 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 
 <%@ include file="common.jsp" %>
-<%@ page import="com.list.entity.AttendEntity" %>
+<%@ page import="com.list10.entity.AttendEntity" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 	<table border="1">
 		<tr>
-			<td width='200'>ÇĞ¹ø</td>
-			<td width='200'>¼ö°­³âµµ</td>
-			<td width='200'>¼ö°­ÇĞ±â</td>
-			<td width='200'>ÀÌ¼ö±¸ºĞ</td>
-			<td width='200'>°ú¸ñÄÚµå</td>
-			<td width='200'>±³¼ö¹øÈ£</td>
-			<td width='200'>ÀÌ¼öÇĞÁ¡</td>
-			<td width='200'>ÃëµæÁ¡¼ö</td>
-			<td width='200'>¼ö°­½ÅÃ»±¸ºĞ</td>
-			<td width='200'>Àç¼ö°­±¸ºĞ</td>
-			<td width='200'>¼ö°­Ã³¸®ÀÏÀÚ</td>
+			<td width='200'>í•™ë²ˆ</td>
+			<td width='200'>ìˆ˜ê°•ë…„ë„</td>
+			<td width='200'>ìˆ˜ê°•í•™ê¸°</td>
+			<td width='200'>ì´ìˆ˜êµ¬ë¶„</td>
+			<td width='200'>ê³¼ëª©ì½”ë“œ</td>
+			<td width='200'>êµìˆ˜ë²ˆí˜¸</td>
+			<td width='200'>ì´ìˆ˜í•™ì </td>
+			<td width='200'>ì·¨ë“ì ìˆ˜</td>
+			<td width='200'>ìˆ˜ê°•ì‹ ì²­êµ¬ë¶„</td>
+			<td width='200'>ì¬ìˆ˜ê°•êµ¬ë¶„</td>
+			<td width='200'>ìˆ˜ê°•ì²˜ë¦¬ì¼ì</td>
 		</tr>
-		<%
-	ArrayList list = (ArrayList)request.getAttribute("list");
 		
-		System.out.println( list.size() );
-	
-	for(int i=0; i<list.size();i++){
-		
-		String stu_no = null;
-		String att_year = null;
-		int att_term = 0;
-		int att_isu = 0;
-		String sub_code = null;
-		String prof_code = null;
-		int att_ponumber = 0;
-		int att_grade = 0;
-		String att_div = null;
-		String att_jae = null;
-		Timestamp att_date = null;
-		
-%>
-	<tr>
-		<td><%=((AttendEntity)list.get(i)).getStuNo() %></td>
-		<td><%=((AttendEntity)list.get(i)).getAttYear() %></td>
-		<td><%=((AttendEntity)list.get(i)).getAttTerm() %></td>
-		<td><%=((AttendEntity)list.get(i)).getAttIsu() %></td>
-		<td><%=((AttendEntity)list.get(i)).getSubCode() %></td>
-		<td><%=((AttendEntity)list.get(i)).getProfCode() %></td>
-		<td><%=((AttendEntity)list.get(i)).getAttPonumber() %></td>
-		<td><%=((AttendEntity)list.get(i)).getAttGrade() %></td>
-		<td><%=((AttendEntity)list.get(i)).getAttDiv() %></td>
-		<td><%=((AttendEntity)list.get(i)).getAttJae() %></td>
-		<td><%=((AttendEntity)list.get(i)).getAttDate() %></td>
-	</tr>
-<%	
-	}
-%>
-		
-		
-	</table>
+
+
+
+
+	<c:forEach var="aList" items="${aList }" begin="0" step="1">
+		<tr>
+			<td>${aList.getStuNo() }</td>
+			<td>${aList.getAttYear() }</td>
+			<td>${aList.getAttTerm() }</td>
+			<td>${aList.getAttIsu() }</td>
+			<td>${aList.getSubCode() }</td>
+			<td>${aList.getProfCode() }</td>
+			<td>${aList.getAttPonumber() }</td>
+			<td>${aList.getAttGrade() }</td>
+			<td>${aList.getAttDiv() }</td>
+			<td>${aList.getAttJae() }</td>
+			<td>${aList.getAttDate() }</td>
+		</tr>
+	</c:forEach>
+</table>
 
 
 

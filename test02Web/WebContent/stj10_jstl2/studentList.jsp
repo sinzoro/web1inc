@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ include file="common.jsp"%>
-<%@ page import="com.list.entity.StudentEntity"%>
+<%@ page import="com.list10.entity.StudentEntity"%>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,7 +21,7 @@
 
 	function deptListSubmit() {
 		//document.getElementById('cmd').value = 'select';
-		document.getElementById('formStu').action = '/test02Web/DepartmentAction';
+		document.getElementById('formStu').action = '${pageContext.request.contextPath}/test02Web/DepartmentAction';
 		document.getElementById("formStu").submit();
 	}
 </script>
@@ -56,31 +58,28 @@
 				<td width='200'>휴대전화번호</td>
 				<td width='200'>출생년도</td>
 			</tr>
-			<%
-				ArrayList list = (ArrayList) request.getAttribute("list");
+			
+			
 
-				for (int i = 0; i < list.size(); i++) {
-
-			%>
+			
+			<c:forEach var="list" items="list" begin="0" step="1" >
 			<tr>
-				<td><%=((StudentEntity) list.get(i)).getSubj()%></td>
-				<td><%=((StudentEntity) list.get(i)).getStuNo()%></td>
-				<td><%=((StudentEntity) list.get(i)).getStuName()%></td>
-				<td><%=((StudentEntity) list.get(i)).getStuEname()%></td>
-				<td><%=((StudentEntity) list.get(i)).getDeptCode()%></td>
-				<td><%=((StudentEntity) list.get(i)).getGrade()%></td>
-				<td><%=((StudentEntity) list.get(i)).getClass1()%></td>
-				<td><%=((StudentEntity) list.get(i)).getJuya()%></td>
-				<td><%=((StudentEntity) list.get(i)).getIdNum()%></td>
-				<td><%=((StudentEntity) list.get(i)).getPostNo()%></td>
-				<td><%=((StudentEntity) list.get(i)).getAddress()%></td>
-				<td><%=((StudentEntity) list.get(i)).getTel()%></td>
-				<td><%=((StudentEntity) list.get(i)).getPhoneNo()%></td>
-				<td><%=((StudentEntity) list.get(i)).getBirthYear()%></td>
+				<td>${list.getSubj()}  </td>
+				<td>${list.getStuNo()} </td>
+				<td>${list.getStuName()} </td>
+				<td>${list.getStuEname()} </td>
+				<td>${list.getDeptCode()} </td>
+				<td>${list.getGrade()} </td>
+				<td>${list.getClass1()} </td>
+				<td>${list.getJuya()} </td>
+				<td>${list.getIdNum()} </td>
+				<td>${list.getPostNo()} </td>
+				<td>${list.getAddress()} </td>
+				<td>${list.getTel()} </td>
+				<td>${list.getPhoneNo()} </td>
+				<td>${list.getBirthYear()} </td>
 			</tr>
-			<%
-				}
-			%>
+			</c:forEach>
 
 		</table>
 	</form>

@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
 
@@ -19,10 +19,10 @@
 		var deptName = document.getElementById('deptName').value;
 		var deptEname = document.getElementById('deptEname').value;
 		
-		//¿©±âºÎÅÍ ³Ñ±â°í µî·Ï Å×½ºÆ® ºÎÅÍ ½ÃÀÛ
+		//ì—¬ê¸°ë¶€í„° ë„˜ê¸°ê³  ë“±ë¡ í…ŒìŠ¤íŠ¸ ë¶€í„° ì‹œì‘
 		
 		if( deptCode=='' || deptName=='' || deptEname=='' ){
-			alert('ºó°ª¸¸ Ã¼Å©');
+			alert('ë¹ˆê°’ë§Œ ì²´í¬');
 			return 0;
 		}
 		
@@ -41,54 +41,40 @@
 </head>
 <body>
 
-	<%
-	
-	String deptCode = request.getParameter("deptCode");
-	deptCode = (deptCode==null?"10":deptCode);
-	deptCode = (deptCode.equals("")?"10":deptCode);
-	String deptName = request.getParameter("deptName");
-	deptName = (deptName==null?"test":deptName);
-	deptName = (deptName.equals("")?"test":deptName);
-	String deptEname = request.getParameter("deptEname");
-	deptEname = (deptEname==null?"test":deptEname);
-	deptEname = (deptEname.equals("")?"test":deptEname);
-	String CreateDate = request.getParameter("CreateDate");
-	CreateDate = (CreateDate==null?"2017-10-25":CreateDate);
-	CreateDate = (CreateDate.equals("")?"2017-10-25":CreateDate);
-	String errMsg = request.getParameter("errMsg");
-	errMsg = (errMsg==null?"noErr":errMsg);
-	errMsg = (errMsg.equals("")?"noErr":errMsg);
-	String errRs = request.getParameter("errRs");
-	errRs = (errRs==null?"0":errRs);
 	
 	
-	
-	%>
+	<c:set var="deptCode" value=${ deptCode eq "" || deptCode eq null ?"10":deptCode } />
+	<c:set var="deptName" value=${ deptName eq "" || deptName eq null ?"test":deptName } />
+	<c:set var="deptEname" value=${ deptEname eq "" || deptEname eq null ?"test":deptEname } />
+	<c:set var="CreateDate" value=${ CreateDate eq "" || CreateDate eq null ?"2017-10-25":deptEname } />
+	<c:set var="errMsg" value=${ errMsg eq "" || errMsg eq null ?"noErr":errMsg } />
+	<c:set var="errRs" value=${ errRs eq "" || errRs eq null ?"0":errRs } />
 
-	<form action=/test02Web/DepartmentAction id='formIns' method=get>
+
+	<form action=${pageContext.request.contextPath }/DepartmentAction id='formIns' method=get>
 		<input type=hidden name='cmd' id='cmd' value='insert'>
 		<table border=1>
 			<tr>
 				<td width=200>errMsg</td>
-				<td width=400><input type=text name=errMsg value=<%=errMsg %> ></td>
+				<td width=400><input type=text name=errMsg value=${errMsg } ></td>
 			</tr>
 			<tr>
-				<td>ÇĞ°úÄÚµå</td>
-				<td><input type=text name=deptCode id=deptCode value=<%=deptCode %> ></td>
+				<td>í•™ê³¼ì½”ë“œ</td>
+				<td><input type=text name=deptCode id=deptCode value=${deptCode } ></td>
 			</tr>
 			<tr>
-				<td>ÇĞ°ú¸í</td>
-				<td><input type=text name=deptName id=deptName value=<%=deptName %> ></td>
+				<td>í•™ê³¼ëª…</td>
+				<td><input type=text name=deptName id=deptName value=${deptName } ></td>
 			</tr>
 			<tr>
-				<td>ÇĞ°ú¿µ¹®¸í</td>
-				<td><input type=text name=deptEname id=deptEname value=<%=deptEname %> ></td>
+				<td>í•™ê³¼ì˜ë¬¸ëª…</td>
+				<td><input type=text name=deptEname id=deptEname value=${deptEname } ></td>
 			</tr>
 			<tr>
 				<td colspan=2>
-					<input type=hidden name=errRs value=<%=errRs %>>
-					<input type=button value=µî·Ï onclick='deptInsSubmit()'>
-					<input type=button value=¸®½ºÆ® onclick='deptListSubmit()'>
+					<input type=hidden name=errRs value=${errRs } >
+					<input type=button value=ë“±ë¡ onclick='deptInsSubmit()'>
+					<input type=button value=ë¦¬ìŠ¤íŠ¸ onclick='deptListSubmit()'>
 				</td>
 			</tr>
 		</table>

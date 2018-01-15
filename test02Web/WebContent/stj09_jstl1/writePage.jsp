@@ -17,7 +17,7 @@
 <title>write page sample</title>
 
 
-<c:set var="list" value="${requestScope.list }" />
+
 <c:set var="ckMap" value="${list.get(0) }" />
 
 

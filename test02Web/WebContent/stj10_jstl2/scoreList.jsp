@@ -1,51 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
 <%@ include file="common.jsp" %>
-<%@ page import="com.list.entity.ScoreEntity" %>
+<%@ page import="com.list10.entity.ScoreEntity" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 	<table border="1">
 		<tr>
-			<td width='200'>ÇĞ¹ø</td>
-			<td width='200'>¼ºÀûÃëµæ³âµµ</td>
-			<td width='200'>ÇĞ±â</td>
-			<td width='200'>½ÅÃ»ÇĞÁ¡</td>
-			<td width='200'>ÃëµæÇĞÁ¡</td>
-			<td width='200'>ÆòÁ¡Æò±Õ</td>
-			<td width='200'>¹éºĞ·ü ÃÑÁ¡</td>
-			<td width='200'>¼ºÀû±¸ºĞ</td>
-			<td width='200'>¼ºÀûÃ³¸®ÀÏÀÚ</td>
+			<td width='200'>í•™ë²ˆ</td>
+			<td width='200'>ì„±ì ì·¨ë“ë…„ë„</td>
+			<td width='200'>í•™ê¸°</td>
+			<td width='200'>ì‹ ì²­í•™ì </td>
+			<td width='200'>ì·¨ë“í•™ì </td>
+			<td width='200'>í‰ì í‰ê· </td>
+			<td width='200'>ë°±ë¶„ë¥  ì´ì </td>
+			<td width='200'>ì„±ì êµ¬ë¶„</td>
+			<td width='200'>ì„±ì ì²˜ë¦¬ì¼ì</td>
 		</tr>
-		<%
-	ArrayList list = (ArrayList)request.getAttribute("list");
-		
-		System.out.println( list.size() );
-	
-	for(int i=0; i<list.size();i++){
 
-%>
+
+
+	<c:forEach var="list" items="${list }" begin="0" step="1" >
 	<tr>
-		<td><%=((ScoreEntity)list.get(i)).getStuNo() %></td>
-		<td><%=((ScoreEntity)list.get(i)).getScoYear() %></td>
-		<td><%=((ScoreEntity)list.get(i)).getScoTerm() %></td>
-		<td><%=((ScoreEntity)list.get(i)).getReqPonumber() %></td>
-		<td><%=((ScoreEntity)list.get(i)).getTakePonumber() %></td>
-		<td><%=((ScoreEntity)list.get(i)).getExamAvg() %></td>
-		<td><%=((ScoreEntity)list.get(i)).getExamTotal() %></td>
-		<td><%=((ScoreEntity)list.get(i)).getScoDiv() %></td>
-		<td><%=((ScoreEntity)list.get(i)).getScoDate() %></td>
+		<td>${list.getStuNo() } </td>
+		<td>${list.getScoYear() } </td>
+		<td>${list.getScoTerm() } </td>
+		<td>${list.getReqPonumber() } </td>
+		<td>${list.getTakePonumber() }  </td>
+		<td>${list.getExamAvg() }  </td>
+		<td>${list.getExamTotal() }  </td>
+		<td>${list.getScoDiv() }  </td>
+		<td>${list.getScoDate() }  </td>
 	</tr>
-<%	
-	}
-%>
+	</c:forEach>
+
 	</table>
 
 
