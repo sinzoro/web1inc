@@ -10,50 +10,19 @@
 	
 	
 	<select id="getDepartmentList" parameterClass="departmentEntity" resultClass="departmentEntity"> 
-	 
-	 /* 1.조건없는 리스트 추출 */
+	
 		SELECT 
 			dept_code as deptCode,
 			dept_name as deptName,
 			dept_ename as deptEname,
 			create_date as createDate	
 		FROM DEPARTMENT ORDER BY DEPT_CODE
-	
-	 
-	   /* 2. dynamic 을 조건을 이용한 리스트 추출 */ 
-		<!-- SELECT 
-			dept_code as deptCode,
-			dept_name as deptName,
-			dept_ename as deptEname,
-			create_date as createDate	
-		FROM DEPARTMENT 
-		<dynamic prepend="WHERE">
-		  <isLessEqual property="deptCode" compareValue="20" prepend="and">
-		  	1=12
-		  </isLessEqual>
-		  <isNotEmpty property="deptCode" prepend="and"> 
-		  	dept_code=#deptCode#
-		  </isNotEmpty>
-		  <isEmpty property="deptName" prepend="and">
-		  	1=1
-		  </isEmpty>
-		  <isGreaterEqual property="deptCode" compareValue="10" prepend="and">
-		  	100=#deptCode#
-		  </isGreaterEqual>
-		  <isNotEmpty property="testList">
-			  <iterate prepend="AND DEPT_CODE IN " property="testList" open="(" close=")" conjunction=",">
-	            #testList[].data#
-			  </iterate>
-		  </isNotEmpty>
 
-		  
-		</dynamic>
-		ORDER BY DEPT_CODE -->
-	
-	 
-	 
 	</select>
 	
+	<statement id="insertDepartment" parameterClass="java.util.HashMap" resultClass="int">
+		INSERT INTO DEPARTMENT (DEPT_CODE,DEPT_NAME,DEPT_ENAME,CREATE_DATE) VALUES (#deptCode#,#deptName#,#deptEname#,SYSDATE)
+	</statement>
 	
 	<resultMap class="com.list.entity.DepartmentEntity" id="departmentEntityResultMap">
 		<result property="deptCode" column="DEPT_CODE"/> 
@@ -65,29 +34,6 @@
 	<parameterMap class="com.list.entity.DepartmentEntity" id="departmentEntityParamMap">
 		<parameter property="deptCode" javaType="java.lang.Integer" jdbcType="INTEGER" mode="IN"/>
 	</parameterMap>
-	
-	 
-	
-	<select id="getDepartmentList2" parameterMap="departmentEntityParamMap" resultMap="departmentEntityResultMap">
-		SELECT 
-			DEPT_CODE,
-			DEPT_NAME,
-			DEPT_ENAME,
-			CREATE_DATE	
-		FROM DEPARTMENT 
-		WHERE DEPT_CODE=?
-		ORDER BY DEPT_CODE 
-	</select>
-	
-	
-	<statement id="insertDepartment" parameterClass="java.util.HashMap" resultClass="int">
-		INSERT INTO DEPARTMENT (DEPT_CODE,DEPT_NAME,DEPT_ENAME,CREATE_DATE) VALUES (#deptCode#,#deptName#,#deptEname#,SYSDATE)
-	</statement>
-
-	<statement id="sampleInsertEnd" parameterClass="java.util.HashMap" resultClass="int">
-		INSERT INTO DEPARTMENT (DEPT_CODE,DEPT_NAME,DEPT_ENAME,CREATE_DATE) VALUES (#deptCode#,#deptName#,#deptEname#,SYSDATE)
-	</statement>
-	
 
 
 </sqlMap>

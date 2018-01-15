@@ -14,39 +14,9 @@ import com.list.common.connection.ConnectDB;
 
 public class DepartmentDao {
 
-	public ArrayList getDepartmentList() {
-
-		Connection con = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		String sql = "";
-		ArrayList list = new ArrayList();
-
-		try {
-			con = ConnectDB.getConnection();
-			stmt = con.createStatement();
-
-			sql = "SELECT DEPT_CODE AS DEPTCODE, DEPT_NAME AS DEPTNAME, DEPT_ENAME AS DEPTENAME, CREATE_DATE AS CREATEDATE FROM DEPARTMENT";
-			rs = stmt.executeQuery(sql);
-
-			while (rs.next()) {
-				DepartmentEntity de = new DepartmentEntity();
-				de.setDeptCode(rs.getInt("DEPTCODE"));
-				de.setDeptName(rs.getString("DEPTNAME"));
-				de.setDeptEname(rs.getString("DEPTENAME"));
-				de.setCreateDate(rs.getTimestamp("CREATEDATE"));
-
-				list.add(de);
-			}
-
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-
-		return list;
-	}// getDepartmentList
 	
-	public ArrayList getDepartmentIbatisList() {
+	
+	public ArrayList getDepartmentList() {
 
 		ArrayList list = new ArrayList();
 		DepartmentEntity departmentEntity = new DepartmentEntity();
