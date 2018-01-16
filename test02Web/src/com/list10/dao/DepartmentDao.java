@@ -34,53 +34,35 @@ public class DepartmentDao {
 
 	public int setDepartmentInsert(HashMap<String, String> dMap) {
 
-		Connection con = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		String sql = "";
-		String deptCode = dMap.get("deptCode");
-		String deptName = dMap.get("deptName");
-		String deptEname = dMap.get("deptEname");
 		int rsNum = 0;
-		
+		String divStr = "";
+		String srchDeptCode = dMap.get("deptCode");
+		ArrayList<DepartmentEntity> list = new ArrayList<DepartmentEntity>();
+		DepartmentEntity departmentEntity = new DepartmentEntity();
 		
 		try {
-			con = ConnectDB.getConnection();
-			stmt = con.createStatement();
+			
+			list = (ArrayList<DepartmentEntity>)(IBatisDBConnector.getSqlMapInstance()).queryForList("getDepartmentDeptCodeList", departmentEntity);
 
-			sql = "SELECT DEPT_CODE AS DEPTCODE FROM DEPARTMENT";
-			rs = stmt.executeQuery(sql);
-
-			String divStr = "";
-
-			while (rs.next()) {
-				divStr = rs.getString("deptCode");
-				if (divStr.equals(deptCode)) {
+			for(int i=0;i<list.size();i++ ) {
+				divStr = list.get(i).getDeptCode()+"";
+				if( srchDeptCode.equals(divStr) ) {
 					rsNum = -1;
 					break;
 				}
 				rsNum = -2;
 			}
-			// System.out.println( "errRs2 : "+errRs );
-
-			if ( rsNum==-2 ) {
-				sql = "insert into DEPARTMENT( dept_code, dept_name, dept_ename, Create_date ) values(" + deptCode
-						+ ", '" + deptName + "', '" + deptEname + "', sysdate )"; // 실행시 쿼리
-
-				System.out.println(sql);
-
-				rsNum = stmt.executeUpdate(sql); // 쿼리실행하며 데이터 저장
-
-			}
 			
-			// System.out.println( "errRs : "+errRs );
+			if ( rsNum==-2 ) {
+				rsNum = (Integer)(IBatisDBConnector.getSqlMapInstance()).update("insertDepartment",dMap);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 
 		}
-		return rsNum;
+		return 0;//rsNum;
 
 	} // setDepartmentInsert
 

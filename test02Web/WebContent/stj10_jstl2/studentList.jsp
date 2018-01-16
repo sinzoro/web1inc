@@ -21,7 +21,7 @@
 
 	function deptListSubmit() {
 		//document.getElementById('cmd').value = 'select';
-		document.getElementById('formStu').action = '${pageContext.request.contextPath}/test02Web/DepartmentAction';
+		document.getElementById('formStu').action = '${pageContext.request.contextPath}/test02Web/DepartmentAction10';
 		document.getElementById("formStu").submit();
 	}
 </script>
@@ -62,7 +62,7 @@
 			
 
 			
-			<c:forEach var="list" items="list" begin="0" step="1" >
+			<c:forEach var="list" items="${list }" begin="0" step="1" >
 			<tr>
 				<td>${list.getSubj()}  </td>
 				<td>${list.getStuNo()} </td>

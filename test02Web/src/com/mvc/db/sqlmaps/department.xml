@@ -20,6 +20,10 @@
 
 	</select>
 	
+	<select id="getDepartmentDeptCodeList" parameterClass="departmentEntity" resultClass="departmentEntity"> 
+		SELECT dept_code as deptCode FROM DEPARTMENT
+	</select>
+	
 	<statement id="insertDepartment" parameterClass="java.util.HashMap" resultClass="int">
 		INSERT INTO DEPARTMENT (DEPT_CODE,DEPT_NAME,DEPT_ENAME,CREATE_DATE) VALUES (#deptCode#,#deptName#,#deptEname#,SYSDATE)
 	</statement>

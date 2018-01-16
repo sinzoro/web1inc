@@ -23,7 +23,7 @@
 		
 		document.getElementById('cmd').value = 'select';
 		
-		document.getElementById('formDept').action = '${pageContext.request.contextPath}/StudentAction';
+		document.getElementById('formDept').action = '${pageContext.request.contextPath}/StudentAction10';
 		document.getElementById("formDept").submit();
 	}
 
@@ -33,7 +33,7 @@
 </head>
 <body>
 
-	<form id='formDept' action='${pageContext.request.contextPath}/DepartmentAction' method=get>
+	<form id='formDept' action='${pageContext.request.contextPath}/DepartmentAction10' method=get>
 		<table border="1">
 			<tr>
 				<td colspan=5 align=right><input type=submit value=등록하기 ></td>

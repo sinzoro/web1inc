@@ -83,7 +83,7 @@ public class DepartmentAction extends HttpServlet {
 			
 			request.setAttribute("list", list);
 			
-			url = "/stj08/departmentList.jsp";
+			url = "/stj10_jstl2/departmentList.jsp";
 			
 			
 		}else if(cmd.equals("selectOne")) {

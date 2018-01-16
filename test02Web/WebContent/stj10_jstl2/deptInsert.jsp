@@ -43,15 +43,15 @@
 
 	
 	
-	<c:set var="deptCode" value=${ deptCode eq "" || deptCode eq null ?"10":deptCode } />
-	<c:set var="deptName" value=${ deptName eq "" || deptName eq null ?"test":deptName } />
-	<c:set var="deptEname" value=${ deptEname eq "" || deptEname eq null ?"test":deptEname } />
-	<c:set var="CreateDate" value=${ CreateDate eq "" || CreateDate eq null ?"2017-10-25":deptEname } />
-	<c:set var="errMsg" value=${ errMsg eq "" || errMsg eq null ?"noErr":errMsg } />
-	<c:set var="errRs" value=${ errRs eq "" || errRs eq null ?"0":errRs } />
+	<c:set var="deptCode" value='${ deptCode eq "" || deptCode eq null ?"10":deptCode }' />
+	<c:set var="deptName" value='${ deptName eq "" || deptName eq null ?"test":deptName }' />
+	<c:set var="deptEname" value='${ deptEname eq "" || deptEname eq null ?"test":deptEname }' />
+	<c:set var="CreateDate" value='${ CreateDate eq "" || CreateDate eq null ?"2017-10-25":deptEname }' />
+	<c:set var="errMsg" value='${ errMsg eq "" || errMsg eq null ?"noErr":errMsg }' />
+	<c:set var="errRs" value='${ errRs eq "" || errRs eq null ?"0":errRs }' />
 
 
-	<form action=${pageContext.request.contextPath }/DepartmentAction id='formIns' method=get>
+	<form action='${pageContext.request.contextPath }/DepartmentAction10' id='formIns' method=get>
 		<input type=hidden name='cmd' id='cmd' value='insert'>
 		<table border=1>
 			<tr>
