@@ -60,7 +60,7 @@
 			</tr>
 		</c:forEach>>
 			
-			<input type=hidden id='srch' name='srch' value=''>
+			<input type=hidden id='srch' name='srch' value='${srch }'>
 		</table>
 	</form>
 

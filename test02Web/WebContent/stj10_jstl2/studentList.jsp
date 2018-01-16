@@ -21,7 +21,7 @@
 
 	function deptListSubmit() {
 		//document.getElementById('cmd').value = 'select';
-		document.getElementById('formStu').action = '${pageContext.request.contextPath}/test02Web/DepartmentAction10';
+		document.getElementById('formStu').action = '${pageContext.request.contextPath}/DepartmentAction10';
 		document.getElementById("formStu").submit();
 	}
 </script>
