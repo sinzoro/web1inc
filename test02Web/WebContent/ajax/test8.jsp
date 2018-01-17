@@ -33,6 +33,7 @@
 			
 			success: function(data){
 				console.log("성공 data : " + JSON.stringify(data));
+				//$("#disp").html("서버에서 받은 값 :<B>" + data.name+"</B>");
 				$("#disp").html("서버에서 받은 값 :<B>" + data.name+"</B>");
 			},
 			error: function(xhr, status, error){
@@ -75,6 +76,8 @@
 		num : <input type="text" name="num">
 	<p>
 		name : <input type="text" name="name">
+	<p>
+		<div id="disp"></div>
 	</form>
 
 </body>
